@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         Debug.Log("awake");
-        PlayerPrefs.DeleteAll();
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         DontDestroyOnLoad(gameObject);
@@ -29,10 +28,17 @@ public class GameManager : MonoBehaviour
     // References
     public Player player;
 
+    public FloatingTextManager floatingTextManager;
     // Logic
     public int pesos;
     public int experience;
 
+    // floating text
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    {
+        Debug.Log(msg);
+        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+    }
     // Save state
     /*
      * INT preferredSkin
